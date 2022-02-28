@@ -13,10 +13,12 @@ void Demo::RunLinearRegression()
 	Ort::Env env;
 
 	// creates an inference session for a certain model
-	Ort::Session session{ env, LR"(C:\\Users\\hchang\\source\\repos\\Regression\\linear.onnx)", Ort::SessionOptions{} };
+	Ort::Session session{ env, L"C:\\Users\\hchang\\onnxFile\\linear.onnx", Ort::SessionOptions{}};
+	std::cout << "Model Loaded Successfully!\n";
+	system("PAUSE");
 
 	// Ort::Session gives access to input and output information:
-	// - count
+	// - counts
 	// - name
 	// - shape and type
 	std::cout << "Number of model inputs: " << session.GetInputCount() << "\n";
