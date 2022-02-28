@@ -13,7 +13,7 @@ void Demo::RunLinearRegression()
 	Ort::Env env;
 
 	// creates an inference session for a certain model
-	Ort::Session session{ env, LR"(linear.onnx)", Ort::SessionOptions{} };
+	Ort::Session session{ env, LR"(C:\\Users\\hchang\\source\\repos\\Regression\\linear.onnx)", Ort::SessionOptions{} };
 
 	// Ort::Session gives access to input and output information:
 	// - count
@@ -45,8 +45,8 @@ void Demo::RunLinearRegression()
 		inputShape.data(), inputShape.size());
 
 	// the API needs the array of inputs you set and the array of outputs you get
-	array inputNames = { inputName };
-	array outputNames = { outputName };
+	std::vector<const char*> inputNames = { inputName };
+	std::vector<const char*> outputNames = { outputName };
 
 	// finally run the inference!
 	auto outputValues = session.Run(
